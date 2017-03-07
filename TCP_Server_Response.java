@@ -1,4 +1,4 @@
-package server.servers;
+package servers;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -15,7 +15,7 @@ import java.util.Scanner;
 
 import javax.swing.JOptionPane;
 
-import server.MySQL.Function;
+import MySQL.Function;
 
 public class TCP_Server_Response {
 	static int port = 8081;
@@ -77,7 +77,7 @@ public class TCP_Server_Response {
 
 				String Mac = getMac(IP);
 
-				Function f = new Function("localhost", "root", "raspberry", "cveso");
+				Function f = new Function("192.168.12.192", "root", "raspberry", "cveso");
 
 				/*
 				 * String[] r = str.split(" : "); String id = r[1]; String[]
@@ -126,26 +126,17 @@ public class TCP_Server_Response {
 					if (result[0].equals("")) { // refuse
 						pred.println("Access_denied");
 					} else {
-						System.out.println("Nom : " + result[1] + " Prenom : " + result[2]);
-						pred.println("Access_granted");
+						System.out.println("Nom : " + result[1] + "Prenom : " + result[2]);
+						pred.println("Access_granted : Nom : " + result[1] + " : Prenom : " + result[2]);
 					}
 				}
 
-				else if (str.contains("Auth_PUCE")) {
+				else if (str.equals("Auth_PUCE")) {
 					// TODO PUCE
 				}
 
-				else if (str.contains("Auth_BIO")) {
-					String[] r = str.split(" : ");
-					String id = r[2];
-					String[] result = f.Find("Id-BIO", id);
-					
-					if (result[0].equals("")) { //bvcghjklm
-						pred.println("Access_denied");
-					} else {
-						System.out.println("Nom : " + result[1] + " Prenom : " + result[2]);
-						pred.println("Access_granted : Nom : " + result[1] + " Prenom : " + result[2]);
-					}
+				else if (str.equals("Auth_BIO")) {
+					// TODO BIO
 				}
 
 				plec.close();
