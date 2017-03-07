@@ -144,7 +144,7 @@ public class TCP_Server_Response {
 						pred.println("Access_denied");
 					} else {
 						System.out.println("Nom : " + result[1] + " Prenom : " + result[2]);
-						pred.println("Access_granted");
+						pred.println("Access_granted : Nom : " + result[1] + " Prenom : " + result[2]);
 					}
 				}
 
