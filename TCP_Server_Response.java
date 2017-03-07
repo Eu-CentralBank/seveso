@@ -131,16 +131,16 @@ public class TCP_Server_Response {
 					}
 				}
 
-				else if (str.equals("Auth_PUCE")) {
+				else if (str.contains("Auth_PUCE")) {
 					// TODO PUCE
 				}
 
-				else if (str.equals("Auth_BIO")) {
+				else if (str.contains("Auth_BIO")) {
 					String[] r = str.split(" : ");
-					String id = r[2]; //2
+					String id = r[2];
 					String[] result = f.Find("Id-BIO", id);
 					
-					if (result[0].equals("")) {
+					if (result[0].equals("")) { // refuse
 						pred.println("Access_denied");
 					} else {
 						System.out.println("Nom : " + result[1] + " Prenom : " + result[2]);
