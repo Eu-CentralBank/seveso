@@ -137,10 +137,10 @@ public class TCP_Server_Response {
 
 				else if (str.equals("Auth_BIO")) {
 					String[] r = str.split(" : ");
-					String id = r[2];
+					String id = r[2]; //2
 					String[] result = f.Find("Id-BIO", id);
 					
-					if (result[0].equals("")) { // refuse
+					if (result[0].equals("")) {
 						pred.println("Access_denied");
 					} else {
 						System.out.println("Nom : " + result[1] + " Prenom : " + result[2]);
