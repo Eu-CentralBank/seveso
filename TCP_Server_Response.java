@@ -140,7 +140,7 @@ public class TCP_Server_Response {
 					String id = r[2];
 					String[] result = f.Find("Id-BIO", id);
 					
-					if (result[0].equals("")) { //
+					if (result[0].equals("")) { //bvcghjklm
 						pred.println("Access_denied");
 					} else {
 						System.out.println("Nom : " + result[1] + " Prenom : " + result[2]);
