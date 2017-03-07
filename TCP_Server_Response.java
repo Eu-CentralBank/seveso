@@ -59,7 +59,7 @@ public class TCP_Server_Response {
 
 			try {
 				ServerSocket s;
-				System.out.println(InetAddress.getLocalHost() + " écoute du port : " + port + "...");
+				System.out.println(InetAddress.getLocalHost() + " Ã©coute du port : " + port + "...");
 				s = new ServerSocket(port);
 				Socket soc = s.accept();
 
@@ -84,7 +84,7 @@ public class TCP_Server_Response {
 				 * result = f.Find(id); if (result[0].equals("")) { // refuse
 				 * pred.println("Autorisation !OK"); } else {
 				 * System.out.println("Nom : " + result[1] + "Prenom : " +
-				 * result[2]); // valide l'entré
+				 * result[2]); // valide l'entrÃ©
 				 * pred.println("Autorisation OK"); } else {
 				 * pred.println("Check Server OK"); }
 				 */
@@ -96,13 +96,13 @@ public class TCP_Server_Response {
 
 					if (!isPresent) {
 
-						System.out.println("MAC non présent. 0 to add :");
+						System.out.println("MAC non prÃ©sent. 0 to add :");
 						Scanner in = new Scanner(System.in);
 						int retval = in.nextInt();
 
 						/*
 						 * int retval = JOptionPane.showConfirmDialog(null,
-						 * "Nouvelle adresse MAC détectée voulez l'ajouter :" +
+						 * "Nouvelle adresse MAC dÃ©tectÃ©e voulez l'ajouter :" +
 						 * Mac, "Ajout MAC ?", JOptionPane.OK_CANCEL_OPTION);
 						 */
 
@@ -126,7 +126,7 @@ public class TCP_Server_Response {
 					if (result[0].equals("")) { // refuse
 						pred.println("Access_denied");
 					} else {
-						System.out.println("Nom : " + result[1] + "Prenom : " + result[2]);
+						System.out.println("Nom : " + result[1] + " Prenom : " + result[2]);
 						pred.println("Access_granted");
 					}
 				}
@@ -136,7 +136,16 @@ public class TCP_Server_Response {
 				}
 
 				else if (str.equals("Auth_BIO")) {
-					// TODO BIO
+					String[] r = str.split(" : ");
+					String id = r[2];
+					String[] result = f.Find("Id-BIO", id);
+					
+					if (result[0].equals("")) { // refuse
+						pred.println("Access_denied");
+					} else {
+						System.out.println("Nom : " + result[1] + " Prenom : " + result[2]);
+						pred.println("Access_granted");
+					}
 				}
 
 				plec.close();
